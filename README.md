@@ -1,6 +1,3 @@
-## EX. NO: 1 : IMPLEMENTATION OF CAESAR CIPHER
- 
-
 ## AIM:
 
 To implement the simple substitution technique named Caesar cipher using C language.
@@ -27,8 +24,62 @@ becomes C. To change a message back, each letter is replaced by the one three be
 ### STEP-5: Display the cipher text obtained above.
 
 
-PROGRAM :-
+## PROGRAM :-
+```
+
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char plain[100], cipher[100];
+    int key, i, length;
+
+    printf("Enter the plain text: ");
+    scanf("%99s", plain);  // Limit input to 99 characters
+
+    printf("Enter the key value: ");
+    scanf("%d", &key);
+
+    printf("\nPLAIN TEXT: %s", plain);
+    printf("\nENCRYPTED TEXT: ");
+    
+    length = strlen(plain);
+    for (i = 0; i < length; i++) {
+        cipher[i] = plain[i] + key;
+        if (isupper(plain[i]) && cipher[i] > 'Z')
+            cipher[i] -= 26;
+        else if (islower(plain[i]) && cipher[i] > 'z')
+            cipher[i] -= 26;
+        
+        printf("%c", cipher[i]);
+    }
+    
+    cipher[length] = '\0';  // Null-terminate the cipher text
+
+    printf("\nDECRYPTED TEXT: ");
+    for (i = 0; i < length; i++) {
+        plain[i] = cipher[i] - key;
+        if (isupper(cipher[i]) && plain[i] < 'A')
+            plain[i] += 26;
+        else if (islower(cipher[i]) && plain[i] < 'a')
+            plain[i] += 26;
+        
+        printf("%c", plain[i]);
+    }
+
+    printf("\n");
+    return 0;
+}
 
 
 
-OUTPUT :-
+```
+
+
+
+
+## OUTPUT :-
+<img width="1612" height="821" alt="image" src="https://github.com/user-attachments/assets/2bfcbce1-8a44-47a9-95a6-040eef26bc58" />
+
+
